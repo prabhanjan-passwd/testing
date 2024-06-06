@@ -1,7 +1,6 @@
 ---
 - name: Schedule job template
-  hosts: localhost
-  gather_facts: false
+  hosts: all
   tasks:
     - name: Create schedule for job template
       ansible.controller.schedule:
