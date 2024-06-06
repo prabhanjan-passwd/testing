@@ -1,0 +1,15 @@
+---
+- name: Schedule job template
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create schedule for job template
+      ansible.controller.schedule:
+        controller_config_file: inventory.yml
+        name: "Monthly Job"
+        rrule: "DTSTART;TZID=Australia/Melbourne:20230101T020000 RRULE:FREQ=MONTHLY;BYDAY=2TH"
+        job_type: "run"
+        unified_job_template: "{{ job_template_id }}"
+        description: "Run on the 2nd Thursday of every month at 02:00 AM Melbourne time"
+        extra_data: {}
+        state: present
